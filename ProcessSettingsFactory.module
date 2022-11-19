@@ -148,7 +148,10 @@ class ProcessSettingsFactory extends Process {
 					if($nonDefaultLanguages) {
 						if($f->useLanguages) {
 							foreach($nonDefaultLanguages as $language) {
-								$f->set("value" . $language->id, $thisData[$name . "__" . $language->id ]);
+								$localValue = isset($thisData[$name . "__" . $language->id])
+									? $thisData[$name . "__" . $language->id]
+									: '';
+								$f->set("value" . $language->id, $localValue);
 							}
 						}
 					}
